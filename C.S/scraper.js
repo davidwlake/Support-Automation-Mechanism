@@ -1,14 +1,16 @@
+var url = window.location.href;
 
-var accountid = document.body.innerHTML.match(/^accountId: '(.*?)'/gm);
+if(url.includes(".composer.dealer.com")){
+    var accountid = url.split('.composer')[0].split('//')[1];
+} else {
+    var accountid = document.body.innerHTML.match(/^accountId: '(.*?)'/gm)[0].slice(12,-1);
+}
+
 
 if(accountid !== undefined || accountid !== null ){
-    var acctid = accountid.toString(); // if active window has a DDC account ID, change to a string
-	var acct = acctid.slice(12,-1);
-    
-    chrome.storage.sync.set({"accountID" : acct}, function() {
-        var url = "https://dealertrack-production.my.salesforce.com/_ui/search/ui/UnifiedSearchResults?searchType=2&sen=001&sen=003&sen=00T&sen=005&sen=00U&sen=500&sen=a6R&sen=00O&str="+ acct + "#!/fen=001&initialViewMode=detail&str=" + acct;
+    chrome.storage.sync.set({"accountID" : accountid}, function() {
+        var url = "https://dealertrack-production.my.salesforce.com/_ui/search/ui/UnifiedSearchResults?searchType=2&sen=001&sen=003&sen=00T&sen=005&sen=00U&sen=500&sen=a6R&sen=00O&str="+ accountid + "#!/fen=001&initialViewMode=detail&str=" + accountid;
         window.open(url, '_blank');
-
     });
     
 

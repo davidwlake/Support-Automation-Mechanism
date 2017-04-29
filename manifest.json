@@ -2,7 +2,7 @@
     "manifest_version": 2, 
     
     "name": "Support Automation Mechanism",
-    "version": "0.1", 
+    "version": "0.3", 
     
      "icons": {
           "16": "binocular-flat.png"
@@ -28,6 +28,9 @@
         "scripts": ["C.S/menuItem.js"],
         "persistent": true
     },
+    
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+
     
  "permissions": [
         "tabs",
