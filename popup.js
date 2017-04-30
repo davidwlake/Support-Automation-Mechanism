@@ -1,6 +1,7 @@
+// Analytics Code
 var _AnalyticsCode = 'UA-97981252-1';
-
 var _gaq = _gaq || [];
+
 _gaq.push(['_setAccount', _AnalyticsCode]);
 _gaq.push(['_trackPageview']);
 
@@ -13,6 +14,7 @@ _gaq.push(['_trackPageview']);
   s.parentNode.insertBefore(ga, s);
 })();
 
+// Analytics Button Click Event
 function trackButtonClick(e) {
   _gaq.push(['_trackEvent', e.target.id, 'clicked']);
 }
@@ -24,13 +26,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+//Popup functions
 $(function () {
+
     
     $('#createCase').click(function () {
-        chrome.tabs.executeScript({
-        file: 'C.S/scraper.js'
-    });
-
+        if($("#FirstName").val() != "" && $("#LastName").val() != ""){ 
+            var config = {firstName:  $("#FirstName").val(),
+                          lastName:   $("#LastName").val()};
+            chrome.tabs.executeScript( {
+            code: 'var config ='+ JSON.stringify(config) 
+        }, function() {
+            chrome.tabs.executeScript( {file: 'C.S/contactScraper.js'});
+        });
+        } else {
+            chrome.tabs.executeScript( {file: 'C.S/scraper.js'});
+        }
     });
     
 });

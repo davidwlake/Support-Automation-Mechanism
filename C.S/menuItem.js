@@ -18,3 +18,9 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
     window.open("http://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=vehicleQuery&vin=" + clickData.selectionText.replace(" ", ""), '_blank');
    }
 });
+
+function test(value){
+    var url = document.location.href;
+
+    console.log(url);
+}

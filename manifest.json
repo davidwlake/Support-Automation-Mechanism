@@ -15,8 +15,12 @@
     
     "content_scripts": [
     {
-      "matches": ["https://dealertrack-production.my.salesforce.com/_ui/search/ui/UnifiedSearchResults?searchType=2*"],
+      "matches": ["https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=*"],
       "js": ["jquery.js", "C.S/selectAccount.js"]
+    }, 
+    {
+      "matches": ["https://dealertrack-production.my.salesforce.com/00O32000004mUKH*"],
+      "js": ["jquery.js", "C.S/selectContact.js"]
     }, 
     {
       "matches": ["*://*/*"],

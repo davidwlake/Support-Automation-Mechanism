@@ -9,8 +9,6 @@ if(url.includes(".composer.dealer.com")){
 
 if(accountid !== undefined || accountid !== null ){
         window.sessionStorage.setItem("accountID",accountid)
-        var url = "https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=" + accountid;
+        var url = "https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=" + accountid + "&?firstName=" + config.firstName + "&?lastName=" + config.lastName;
         window.open(url, '_blank');
 };
-    
-

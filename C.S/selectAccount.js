@@ -1,34 +1,39 @@
-var i = 0;
-var accountID = "-1";
-var dataBuffer = document.getElementsByClassName("dataCell");
+var i,x, table = [];
 
-chrome.storage.sync.get('accountID', function (items) {
-    if(items.accountID) {
-     accountID = items.accountID;
-        
-      for (i = 0; i < dataBuffer.length; i++) {
-        if (hasUpperCase(dataBuffer[i].innerText) != true &&
-            dataBuffer[i+5].innerText == "Service Account"
-           ) {
-            var linkHref = dataBuffer[i].getElementsByTagName("a")[0].href;
-            var sfID = linkHref.slice(49,64);
-            var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ sfID +"&FromNewCase=true&PSAProject=null&RecordType=012600000009PeO";  
-            
-            window.open(url, '_top');
+temp = document.getElementsByClassName("reportTable tabularReportTable")[0].rows;
 
-            break;
-        }
-      }// End For */
-
+for(i = 1; i < (temp.length - 2); i++){
+        if (!table[i-1]) {                 
+        table[i-1] = [];              
     }
-});
 
-
-
-
-function hasUpperCase(str) {
-    if(str.toLowerCase() != str) {
-        return true;
+    for(x = 0; x < temp[i].cells.length; x++){
+        table[i-1][x] = temp[i].cells[x].innerText;
     }
-    return false;
 }
+
+var url = window.location.href;
+
+if(url.includes("&?firstName=")){
+   var url2 = "https://dealertrack-production.my.salesforce.com/00O32000004mUKH?pv0=" + window.location.href.split("&?firstName=")[1] + "&?pv1=" + window.location.href.split("&?lastName=")[1] + "&?accountId="+ table[0][1];  
+   window.open(url2, '_top'); 
+} else {
+    var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ table[0][1] +"&FromNewCase=true&PSAProject=null&RecordType=012600000009PeO";  
+    window.open(url, '_top');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
