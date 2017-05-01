@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 //Popup functions
 $(function () {
 
-    
     $('#createCase').click(function () {
         if($("#FirstName").val() != "" && $("#LastName").val() != ""){ 
             var config = {firstName:  $("#FirstName").val(),
