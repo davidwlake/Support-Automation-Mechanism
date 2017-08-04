@@ -1,47 +1,88 @@
-{
-    "manifest_version": 2, 
-    
-    "name": "Support Automation Mechanism",
-    "version": "0.3", 
-    
-     "icons": {
-          "16": "binocular-flat.png"
-        },
-    
-    "browser_action": {
-        "default_icon":"icon.png",
-        "default_popup":"popup.html"
-    },
-    
-    "content_scripts": [
-    {
-      "matches": ["https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=*"],
-      "js": ["jquery.js", "C.S/selectAccount.js"]
-    }, 
-    {
-      "matches": ["https://dealertrack-production.my.salesforce.com/00O32000004mUKH*"],
-      "js": ["jquery.js", "C.S/selectContact.js"]
-    }, 
-    {
-      "matches": ["*://*/*"],
-      "js": ["jquery.js", "C.S/menuItem.js"]
-    }
-  ],
-    
-    "background": { 
-        "scripts": ["C.S/menuItem.js"],
-        "persistent": true
-    },
-    
+{  
     "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-
-    
- "permissions": [
-        "tabs",
-        "notifications",
-        "<all_urls>",
-        "storage",
-        "contextMenus"
-    ]    
-
+ 
+   "icons": {
+      "16": "binocular-flat.png"
+   },
+   "manifest_version": 2,
+   "name": "Support Automation Mechanism",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "notifications", "<all_urls>", "storage", "contextMenus" ],
+   "version": "1.65",
+ 
+   "background": {
+      "persistent": true,
+      "scripts": [ "C.S/menuItem.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+   },
+   "commands": { 
+    "influx": {
+        "suggested_key": {
+        "default": "Alt+I",
+        "mac": "Command+I"
+    },
+        "description": "Toggle feature foo."
+    },
+    "composer": {
+        "suggested_key": {
+        "default": "Alt+C",
+        "mac": "Command+C"
+    },
+        "description": "Toggle feature foo."
+    },
+    "vehicle": {
+        "suggested_key": {
+        "default": "Alt+A",
+        "mac": "Command+A"
+    },
+        "description": "Toggle feature foo."
+    },
+    "npr": {
+        "suggested_key": {
+        "default": "Alt+N",
+        "mac": "Command+N"
+    },
+        "description": "Toggle feature foo."
+    }
+   },
+   "content_scripts": [{
+      "js": ["C.S/generalScraper.js" ],
+      "matches": [ "*://*/*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/selectAccount.js" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/selectContact.js" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/00O32000004mUKH*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/menuItem.js" ],
+      "matches": [ "*://*/*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/caseCreation.js"],
+      "matches": [ "https://*.visual.force.com/apex/MLCSelectionPage?def_account_id=*" ]
+                   
+   } , {
+      "js": [ "jquery.js", "C.S/runCase.js" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/500*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/editCase.js" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/500*/e?*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/closeCase.js" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/500*/s?*" ]
+   },
+    {
+      "js": [ "jquery.js", "C.S/composer.js" ],
+      "matches": [ "*://*.composer.dealer.com/website/as/*/*-admin/composer/*" ]
+   }, {
+      "js": [ "jquery.js", "C.S/influxPage.js" ],
+      "matches": [ "*://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=*" ]
+   } , {
+      "js": [ "C.S/caseLookUp.js", "lib/jquery-ui/jquery-ui.js", "lib/jquery-ui/jquery-ui.css" ],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0=*" ]
+   }
+    ]
 }

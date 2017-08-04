@@ -1,23 +1,101 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8"/>
         <title>Protein Tracker</title>
         <script src="jquery.js"></script>
         <script src="popup.js"></script>
+        <script src="options.js"></script>
+
+
+        <script src="/lib/jquery-ui/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="/lib/jquery-ui/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="popup.css">
 
     </head>
     <body>
-        <h1>Support Automation Mechanism</h1>
-        <hr> 
-        First name: <input type="text" id="FirstName"><br>
-        Last name: <input type="text" id="LastName"><br><br>
-        
-        <input id="createCase" type="submit" class="myButton" value="Create A Case" />
+        <div class="title">
+        <h3 id="title">Support Automation Mechanism
+        <button id="help" style="text-align:left;" class="ui-button ui-widget ui-corner-all ui-button-icon-only largeButton " title="Button with icon only">
+            <span class="ui-icon ui-icon-help largeIcon"></span>
+        </button></h3>
+            
+        </div>
+        <div id="alert"></div>
+
         <hr>
-        <p style="text-align:right;"> Version 0.0.5 <br> 
-            Designed by <a href="mailto:david.lake@coxautoinc.com" target="_blank">David Lake</a></p>
+        Case Templates: <br>
+        
+        <select name="files" id="template">
+                    <optgroup label="Support Templates:">
+                        <option value="composerToolsChange">Website/Composer Change</option>
+                        <option value="digitalRetailingIssue">Digital Retailing</option>
+                        <option value="domainChange">Domain Changes</option>
+                        <option value="inventoryToolsIssue">Inventory Issue</option>
+                        <option value="incentivesToolsChange">Incentives Change</option>
+                        <option value="leadsToolsIssue">Leads Issue</option>
+                    </optgroup>
+                    <optgroup label="Sdev Templates:">
+                        <option value="sdevGeneral">General Request</option>
+                        <option value="sdevButton">Button Change</option>
+                        <option value="sdevRevert">Revert Site/Page</option>
+                        <option value="sdevScript">Install Custom Script</option>
+                        <option value="sdevWidget">Change Widget</option>
+                    </optgroup>
+                    <optgroup label="D.A Templates:">
+                        <option value="DAWebsiteChange">Website/Composer Change</option>
+                        <option value="DAAccountSupport">Account Support</option>
+                        <option value="DAInventoryChange">Pricing/Inventory Change</option>
+                    </optgroup>
+                    <option value="defaultCase" selected="selected"> Default</option>
+        </select>
+       
+        <button class="button-ui myButton" id="createCase" name="Created">Create a Case</button>
+        <div id="caseOptions">
+            <label for="internal">Internal</label>
+            <input type="checkbox" name="Internal" id="internal">
+            <label for="roc">R.O.C</label>
+            <input type="checkbox" name="R.O.C" id="roc">
+            <label for="cms">CMS Link</label>
+            <input type="checkbox" name="cms" id="cms">
+        </div>
+        <hr>
         <div id="accordion">
+            <h3>Log A Case</h3>
+            <div>
+                First name: <input type="text" id="FirstName"><br>
+                Last name: <input type="text" id="LastName"><br>
+                <button class="button-ui myButton" id="logCase" name="LogACase"> Log a Case</button>
+            </div>
+            <h3>Create A Matrix</h3>
+            <div>
+                Case Number <input type="text" id="caseNum">
+                <input id="createCase" type="submit" class="button-ui"  value="Create A Matrix" />
+            </div>
+            <h3>Set Default Template</h3>
+            <div style="position: relative;">
+                Subject: <input type="text" id="subject"><br>
+                Body: <textarea rows="4" cols="40" id="body"></textarea><br>
+                
+                <input id="save" name="save" type="submit" class="button-ui myButton" value="Save" />
+                <input id="clear" name="clear" type="submit" class="button-ui myButton" value="Clear" />
+                <input id="addID" style="float: right;" type="submit" value="Add Service ID" class="button-ui myButton"/> 
+                <input id="addCMS" style="float: right;" type="submit" value="Add CMS Link" class="button-ui myButton"/>
+                
+
+            </div>
+        </div>
+        <div id="footer" style="text-align:right;">
+
+        <hr>
+      SAM is Maintained by <a href="https://fuel.coxautoinc.com/people/David.Lake@coxautoinc.com" target="_blank">David Lake</a>
+        <address>
+            <a href="https://spark.achievers.com/profile/12893241" target="_blank">Spark!</a>,<a href="https://docs.google.com/forms/d/e/1FAIpQLSce2kn0EMsDdT8FEkTWY-nmE4wcAwNzgYKQvTILowdpWWxHBQ/viewform?usp=sf_link" target="_blank">Submit an Idea</a>,<a href="https://github.com/davidwlake/Support-Automation-Mechanism" target="_blank"> Github</a>
+        </address>    
+        Version 1.6
+    </div>
+
+    <div id="accordion">
   
     </body>
 </html>
