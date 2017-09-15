@@ -1,5 +1,5 @@
 // Analytics Code
-var _AnalyticsCode = 'UA-97981252-1';
+var _AnalyticsCode = 'UA-104323233-1';
 var _gaq = _gaq || [];
 
 _gaq.push(['_setAccount', _AnalyticsCode]);
@@ -121,7 +121,10 @@ $('#logCase').click(function () {
                 break;
                 }
             }
-        
+            if(template.title == "defaultCase"){
+                template.description = localStorage.getItem("SAM:body");
+                template.subject = localStorage.getItem("SAM:subject");
+            }
         if($("#FirstName").val() != "" && $("#LastName").val() != ""){
             var config = {firstName:  $("#FirstName").val(),
                           lastName:   $("#LastName").val(), 

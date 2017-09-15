@@ -33,17 +33,17 @@
     },
         "description": "Toggle feature foo."
     },
-    "vehicle": {
+    "inventory": {
         "suggested_key": {
         "default": "Alt+A",
         "mac": "Command+A"
     },
         "description": "Toggle feature foo."
     },
-    "npr": {
+    "mpr": {
         "suggested_key": {
-        "default": "Alt+N",
-        "mac": "Command+N"
+        "default": "Alt+M",
+        "mac": "Command+M"
     },
         "description": "Toggle feature foo."
     }
@@ -81,7 +81,8 @@
       "js": [ "jquery.js", "C.S/influxPage.js" ],
       "matches": [ "*://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=*" ]
    } , {
-      "js": [ "C.S/caseLookUp.js", "lib/jquery-ui/jquery-ui.js", "lib/jquery-ui/jquery-ui.css" ],
+      "js": [ "C.S/caseLookUp.js", "lib/jquery-ui/jquery-ui.js"],
+    "css":        ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
       "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0=*" ]
    }
     ]
