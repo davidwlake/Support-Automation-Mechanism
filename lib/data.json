@@ -1,0 +1,168 @@
+{
+	"templates": [
+
+		{
+			"title": "composerToolsChange",
+			"description": "ID:{accountId}\nProblem Description: \n\nExpected Result/Goal: \n\n\nCMS Link to the page in question: \n{accountId}.cms.dealer.com\n{CMS}\n\n\n**Please attach screenshot, mockup with explanation of request, and/or link to example site to copy**",
+			"subject": "DDC | Composer Tools | [Brief Description]",
+			"category": "Composer",
+		  	"subCategory": "Composer Tools",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+		},
+        
+        {
+			"title": "inventoryToolsIssue",
+			"description": "ID:{accountId}\nProblem Description: \n\nExpected Result/Goal: \n\n\nExamples (stock numbers good, VINs better): \n\nNew, Used, or Both: \nWho is the feed provider or are vehicles manually created in control center: \n\nAny Applicable CMS links to the pages in question: \n{accountId}.cms.dealer.com\n{CMS}\n",
+			"subject": "DDC | Inventory Manager | [Brief Description]",
+			"category": "DDC Inventory",
+		  	"subCategory": "Inventory Manager",
+            "type": "Issue",
+            "reason": "Defect (Issue)",
+            "cms": " "
+            
+		},
+	  
+		{
+			"title": "incentivesToolsChange",
+			"description": "ID:{accountId}\nProblem Description: \n\nExpected Result/Goal: \n\nExamples (stock numbers good, VINs better): \n\nIncentive Type (Cash/Finance): \n\nLink to OEM website where incentives display: \n\n\n\n\n**Copy of dealer invoice or incentive matrix attached if missing**",
+			"subject": "DDC | Incentives | [Brief Description]",
+			"category": "DDC Inventory",
+		  	"subCategory": "Incentives Manager",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+		},
+        
+ {
+			"title": "leadsToolsIssue",
+			"description": "ID:{accountId}\nProblem Description: \n\nExpected Result/Goal: \n\nExample lead name or test lead name you have submitted: \n\nCRM/Destination Email if available: ",
+			"subject": "DDC | Leads | [Brief Description]",
+			"category": "DDC Leads",
+		  	"subCategory": "Lead Distribution Rules",
+            "type": "Issue",
+            "reason": "Defect (Issue)",
+            "cms": ""
+            
+		},
+        {
+			"title": "domainChange",
+			"description": "ID:{accountId}\nProblem Description: \n\nExpected Result/Goal: \n\nDomain(s) affected: \n\nCurrent value: \nUpdated value: \n\nBilling Authorized Client Contact Information (E-Mail and Phone): ",
+			"subject": "DDC | Domains | [Brief Description]",
+			"category": "Site Update",
+		  	"subCategory": "DNS Change",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": ""
+            
+		},  
+         {
+			"title": "digitalRetailingIssue",
+			"description": "ID:{accountId}\nProduct Name: PaymentDriver, FinanceDriver, TradeDriver, MenuDriver\nProblem Description: \n\nExpected Result/Goal: \n\nExamples (if inventory, stock numbers good, VINs better):\n\nAny Applicable CMS links to the pages in question: ",
+			"subject": "DDC | DRS | [ProductName] | [Brief Description]",
+			"category": "Digtail Retailing",
+		  	"subCategory": "",
+            "type": "Issue",
+            "reason": "Defect (Issue)",
+            "cms": ""
+            
+		}, 
+        {
+			"title": "sdevGeneral",
+			"description": "- ID:{accountId} \n\n-CMS Links: {accountId}.cms.dealer.com\n{accountId}.cms.dealer.com/new-inventory/index.htm\n{accountId}.cms.dealer.com/used-inventory/index.htm\n{accountId}.cms.dealer.com/certified-inventory/index.htm\n{accountId}.cms.dealer.com/all-inventory/index.htm\n{CMS}\n\n-Item: Name of the item being changed\n\n-Summary: Detailed description of what is the issue/ what needs to change\n\n-Instructions: any specific instructions from the third party\n\n\n**Screenshots attached**",
+			"subject": "[Num of IDS IF >4] item in mention | add to site/vlp/vdp | desktop/mobile-ID",
+			"category": "Composer",
+		  	"subCategory": "Advance Composer",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		},{
+			"title": "sdevButton",
+			"description": "- ID:{accountId} \n\n- CMS Links: {accountId}.cms.dealer.com\n{CMS}\n *This should include all pages where changes will be made\n\n- Destination: CMS link of where this will be going to\n\n-Summary: Detailed description of what is the issue/ what needs to change\n\n- Instructions: include here specific hex colors and any specification of the button\n\n\n**Screenshots attached**",
+			"subject": "[Num of IDS IF >4] item in mention | add to site/vlp/vdp | desktop/mobile-ID",
+			"category": "Composer",
+		  	"subCategory": "Advance Composer",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		}, {
+			"title": "sdevRevert",
+			"description": "- ID:{accountId} \n\n- CMS Links: {accountId}.cms.dealer.com\n{CMS}\n *This should include all pages where changes will be made\n\n- Cached link: If available, URL of cached site\n\n- Date: Date that the content reverted/disappeared \n\n-Summary: Detailed description of what is the issue/ what needs to change\n\n- Examples: Content that should be showing after revert is done",
+			"subject": "[# of IDS IF > 4] Revert | page/vlp/vdp",
+			"category": "Composer",
+		  	"subCategory": "Advance Composer",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		}, {
+			"title": "sdevScript",
+			"description": "- ID:{accountId} \n\n- CMS Links: {accountId}.cms.dealer.com\n{CMS}\n *This should include all pages where changes will be made\n\n- Third Party: Name of the third party\n\n-Summary: Detailed description of what is the issue/ what needs to change\n\n- Instructions: any specific instructions from the third party\n\n\n**Screenshots attached**",
+			"subject": "[Num of IDS IF >4]|Script Name (company name) | add to site/vlp/vdp | desktop/mobile",
+			"category": "Composer",
+		  	"subCategory": "3rd Party Integration Tool",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		},  {
+			"title": "sdevWidget",
+			"description": "- ID:{accountId} \n\n- CMS Links: {accountId}.cms.dealer.com\n{CMS}\n *This should include all pages where changes will be made\n\n- Widget: Name of the Widget\n\n- Summary: Detailed description of what is the issue/ what needs to change\n\n- Instructions: any specific instructions from the third party\n\n\n**Screenshots attached**",
+			"subject": "[Num of IDS IF >4]|Widget Name | add to site/vlp/vdp | desktop/mobile",
+			"category": "Composer",
+		  	"subCategory": "3rd Party Integration Tool",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		}, 
+		{
+			"title": "DAWebsiteChange",
+			"description": "{accountId}\nContact:  \n\nRequest/Problem Description: \nSolution: \n\nCMS:\n{accountId}.cms.dealer.com\n{CMS}\n\n",
+			"subject": "DDC | Account Support | Website Change |  [Brief Description]",
+			"category": "Composer",
+		  	"subCategory": "Composer Tools",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+		},
+        {
+			"title": "DAAccountSupport",
+			"description": "{accountId}\nContact:  \n\nGoal/Question: \nSolution/Training:  \n\nCMS:\n{accountId}.cms.dealer.com\n{CMS}\n\n",
+			"subject": "DDC | Account Support | [Brief Description]",
+			"category": "Composer",
+		  	"subCategory": "Composer Tools",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": ""
+		},
+        {
+			"title": "DAInventoryChange",
+			"description": "{accountId}\nContact:  \n\nRequest/Problem Description: \nInventory type (new, used, both): \nExample: \n\nSolution: \n\nCMS:\n{accountId}.cms.dealer.com\n{CMS}\n\n",
+			"subject": "DDC | Account Support | Inventory | [Brief Description]",
+			"category": "Composer",
+		  	"subCategory": "Composer Tools",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+		},
+        
+        
+        	  
+		{
+			"title": "defaultCase",
+			"description": "Default Case Description",
+			"subject": "DDC | ",
+			"category": "Composer",
+		  	"subCategory": "Composer Tools",
+            "type": "New Change",
+            "reason": "Implementation (Install/Config)",
+            "cms": " "
+            
+		}
+
+	]
+}
