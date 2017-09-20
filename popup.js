@@ -82,7 +82,7 @@ $( "#cms" ).checkboxradio();
 
  
 $('#help').click(function () {
-    window.open("https://docs.dealer.com/display/Support/S.A.M%27s+Space", '_blank');
+    window.open("https://fuel.coxautoinc.com/docs/DOC-144080", '_blank');
 });
 
 $('#createCase').click(function () {

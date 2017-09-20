@@ -8,7 +8,7 @@
    "name": "Support Automation Mechanism",
    "options_page": "options.html",
    "permissions": [ "tabs", "notifications", "<all_urls>", "storage", "contextMenus" ],
-   "version": "1.65",
+   "version": "1.8",
  
    "background": {
       "persistent": true,
@@ -55,7 +55,8 @@
       "js": [ "jquery.js", "C.S/selectAccount.js" ],
       "matches": [ "https://dealertrack-production.my.salesforce.com/00O32000004mUKC?pv0=*" ]
    }, {
-      "js": [ "jquery.js", "C.S/selectContact.js" ],
+      "js": [ "jquery.js", "C.S/selectContact.js", "lib/jquery-ui/jquery-ui.js" ],
+     "css": ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
       "matches": [ "https://dealertrack-production.my.salesforce.com/00O32000004mUKH*" ]
    }, {
       "js": [ "jquery.js", "C.S/menuItem.js" ],
@@ -82,7 +83,7 @@
       "matches": [ "*://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=*" ]
    } , {
       "js": [ "C.S/caseLookUp.js", "lib/jquery-ui/jquery-ui.js"],
-    "css":        ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
+      "css": ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
       "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0=*" ]
    }
     ]

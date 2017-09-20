@@ -19,10 +19,8 @@ if(url.includes("&runTime=true")){
         description = description.replace(/{CMS}/g, template.cms);
      $('[name="j_id0:form:j_id8:j_id38:j_id40"]').val(description);
      $('[name="j_id0:form:j_id8:j_id38:j_id42"]').val(template.subject);
-     $('[name="j_id0:form:j_id8:j_id38:j_id53"]').val("DDC-Websites");
     
-     document.getElementsByName('j_id0:form:j_id8:j_id38:j_id53')[0].dispatchEvent(changeEvent, setTimeout(function(){  document.getElementsByName('j_id0:form:j_id8:j_id38:j_id57')[0].value = template.category;  document.getElementsByName('j_id0:form:j_id8:j_id38:j_id57')[0].dispatchEvent(changeEvent,setTimeout( function() {                          document.getElementsByName('j_id0:form:j_id8:j_id38:j_id61')[0].value = template.subCategory ;} 
-     , 500));
+     document.getElementsByName('j_id0:form:j_id8:j_id38:j_id53')[0].dispatchEvent(changeEvent, setTimeout(function(){  document.getElementsByName('j_id0:form:j_id8:j_id38:j_id57')[0].value = template.category;  document.getElementsByName('j_id0:form:j_id8:j_id38:j_id57')[0].dispatchEvent(changeEvent);
     }, 500));
 }, 1000);   //End Load Time
 }

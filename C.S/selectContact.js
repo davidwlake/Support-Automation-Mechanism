@@ -1,5 +1,7 @@
 var i,x, table = [];
 
+$( ".content" ).append( '<div id="continue_div" title="Take Action"><button class="button-ui myButton" id="continue_btn" name="continue">Select Contact Later</button></div>');
+
 temp = document.getElementsByClassName("reportTable tabularReportTable")[0].rows;
 
 for(i = 1; i < (temp.length - 2); i++){
@@ -11,8 +13,8 @@ temp[i].onclick = function() {
     for(x = 0; x < this.cells.length; x++){
         buffer[x] = this.cells[x].innerText;
     }
-    if(buffer[4] != '\xa0' && buffer[4] != undefined){
-        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[4] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&" + localStorage.getItem("SAM:template") + "&PSAProject=null&RecordType=012600000009PeO";
+    if(buffer[5] != '\xa0' && buffer[5] != undefined){
+        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[5] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&" + localStorage.getItem("SAM:template") + "&PSAProject=null&RecordType=012600000009PeO";
 
         window.open(url, '_top');
 
@@ -31,5 +33,13 @@ temp[i].onclick = function() {
         }
     }
 }
+
+
+setTimeout(function(){
+    $( "#continue_btn" ).button(); 
+    $('#continue_btn').click(function () {
+      window.open("https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ localStorage.getItem("SAM:sfAccountID") +"&FromNewCase=true&runTime=true&accountID="+localStorage.getItem("SAM:accountID") + "&" + localStorage.getItem("SAM:template") + "&PSAProject=null&RecordType=012600000009PeO", '_top');
+    });
+}, 500);
 
 
