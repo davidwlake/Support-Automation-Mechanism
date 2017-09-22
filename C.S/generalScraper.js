@@ -119,11 +119,6 @@ function getData() {
                     window.open("https://apps.dealer.com/inventory/as/"+ data[0] + "/"+ data[0] +"-admin/i/index#/vehicle~summary?quickFilter=all", '_blank');
                 }
                 break;   
-            case "imageLookUp":
-                if (data[0] != "NONE") {
-                    window.open("https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0="+data[0], '_blank');
-                } 
-                break;
             default:
         }
     }

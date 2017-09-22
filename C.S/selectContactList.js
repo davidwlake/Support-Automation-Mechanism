@@ -14,7 +14,7 @@ temp[i].onclick = function() {
         buffer[x] = this.cells[x].innerText;
     }
     if(buffer[5] != '\xa0' && buffer[5] != undefined){
-        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[4] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&" + localStorage.getItem("SAM:template") + "&PSAProject=null&RecordType=012600000009PeO";
+        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[5] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&&" + localStorage.getItem("SAM:template") + "&PSAProject=null&RecordType=012600000009PeO";
 
         window.open(url, '_top');
 

@@ -20,13 +20,7 @@ var menuItem = {
    "title": "SAM Cuts",
    "contexts":["all"]
 }; 
-
-var casesPerAccount = {
-   "id": "casesPerAccount",
-   "title": "Account Cases",
-   "contexts":["all"],
-   "parentId": "samCuts"
-};  
+ 
 var influxView = {
    "id": "influxView",
    "title": "Influx View",
@@ -52,30 +46,12 @@ var mpr = {
    "parentId": "samCuts"
 }; 
 chrome.contextMenus.create(menuItem);
-chrome.contextMenus.create(casesPerAccount);
 chrome.contextMenus.create(influxView);
 chrome.contextMenus.create(pageInComposer);
 chrome.contextMenus.create(inventory);
 chrome.contextMenus.create(mpr);
 
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-    
-    if(clickData.menuItemId == "casesPerAccount" && clickData.selectionText){  
-        
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript( {
-            code: 'var url ='+ JSON.stringify("https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0="+clickData.selectionText) 
-        }, function() {
-            chrome.tabs.executeScript( {file: 'C.S/goTo.js'});
-        });     });
-        
-    } else if(clickData.menuItemId == "casesPerAccount"){  
-        
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: "imageLookUp"});
-     });
-        
-    }
     
     if(clickData.menuItemId == "influxView"){
 
