@@ -1,3 +1,32 @@
+//////////////////
+// 
+// Anylstics
+//
+/////////////////
+
+var _AnalyticsCode = 'UA-106814047-1';
+var _gaq = _gaq || [];
+
+_gaq.push(['_setAccount', _AnalyticsCode]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+})();
+ 
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if (request.report == "analytics"){
+        _gaq.push(['_trackEvent', request.package , 'clicked']);    
+      }
+});
+
 //////////////
 //
 // Commands
@@ -5,102 +34,78 @@
 /////////////
 
 try {
-   chrome.commands.onCommand.addListener(function(command) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: command});
-     }); 
-   });
-}catch(err) {
+    chrome.commands.onCommand.addListener(function (command) {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { text: command });
+        });
+    });
+} catch (err) {
     console.log(err.message);
 }
 
 
 var menuItem = {
-   "id": "samCuts",
-   "title": "SAM Cuts",
-   "contexts":["all"]
-}; 
+    "id": "samCuts",
+    "title": "SAM Cuts",
+    "contexts": ["all"]
+};
 
-var casesPerAccount = {
-   "id": "casesPerAccount",
-   "title": "Account Cases",
-   "contexts":["all"],
-   "parentId": "samCuts"
-};  
 var influxView = {
-   "id": "influxView",
-   "title": "Influx View",
-   "contexts":["all"],
-   "parentId": "samCuts"
-}; 
+    "id": "influxView",
+    "title": "Influx View",
+    "contexts": ["all"],
+    "parentId": "samCuts"
+};
 var pageInComposer = {
-   "id": "pageInComposer",
-   "title": "Page In Composer",
-   "contexts":["all"],
-   "parentId": "samCuts"
-}; 
+    "id": "pageInComposer",
+    "title": "Page In Composer",
+    "contexts": ["all"],
+    "parentId": "samCuts"
+};
 var inventory = {
-   "id": "inventory",
-   "title": "Inventory / Audit Trail",
-   "contexts":["all"],
-   "parentId": "samCuts"
-}; 
+    "id": "inventory",
+    "title": "Inventory / Audit Trail",
+    "contexts": ["all"],
+    "parentId": "samCuts"
+};
 var mpr = {
-   "id": "mpr",
-   "title": "MPR",
-   "contexts":["all"],
-   "parentId": "samCuts"
-}; 
+    "id": "mpr",
+    "title": "MPR",
+    "contexts": ["all"],
+    "parentId": "samCuts"
+};
 chrome.contextMenus.create(menuItem);
-chrome.contextMenus.create(casesPerAccount);
 chrome.contextMenus.create(influxView);
 chrome.contextMenus.create(pageInComposer);
 chrome.contextMenus.create(inventory);
 chrome.contextMenus.create(mpr);
 
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-    
-    if(clickData.menuItemId == "casesPerAccount" && clickData.selectionText){  
-        
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript( {
-            code: 'var url ='+ JSON.stringify("https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0="+clickData.selectionText) 
-        }, function() {
-            chrome.tabs.executeScript( {file: 'C.S/goTo.js'});
-        });     });
-        
-    } else if(clickData.menuItemId == "casesPerAccount"){  
-        
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: "imageLookUp"});
-     });
-        
-    }
-    
-    if(clickData.menuItemId == "influxView"){
 
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: 'influx'});
-     });
-    }
-    if(clickData.menuItemId == "pageInComposer"){
+    if (clickData.menuItemId == "influxView") {
 
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: 'composer'});
-     });
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { text: 'influx' });
+        });
     }
-    if(clickData.menuItemId == "mpr"){
+    if (clickData.menuItemId == "pageInComposer") {
 
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: 'mpr'});
-     });  
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { text: 'composer' });
+        });
     }
-    if(clickData.menuItemId == "inventory"){
+    if (clickData.menuItemId == "mpr") {
 
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-         chrome.tabs.sendMessage(tabs[0].id, {text: 'inventory'});
-     });  
-    }    
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { text: 'mpr' });
+        });
+    }
+    if (clickData.menuItemId == "inventory") {
+
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { text: 'inventory' });
+        });
+    }
 });
 
 

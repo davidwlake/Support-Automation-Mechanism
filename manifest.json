@@ -1,5 +1,5 @@
 {  
-    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
  
    "icons": {
       "16": "binocular-flat.png"
@@ -8,7 +8,7 @@
    "name": "Support Automation Mechanism",
    "options_page": "options.html",
    "permissions": [ "tabs", "notifications", "<all_urls>", "storage", "contextMenus" ],
-   "version": "1.8",
+   "version": "2.16",
  
    "background": {
       "persistent": true,
@@ -79,12 +79,25 @@
       "js": [ "jquery.js", "C.S/composer.js" ],
       "matches": [ "*://*.composer.dealer.com/website/as/*/*-admin/composer/*" ]
    }, {
-      "js": [ "jquery.js", "C.S/influxPage.js" ],
-      "matches": [ "*://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=*" ]
+      "js": [ "jquery.js", "C.S/selectParentID.js" ],
+      "matches": [ "*://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0=*" ]
+   } ,{
+      "js": [ "jquery.js", "C.S/selectCaseID.js" ],
+      "matches": [ "*://dealertrack-production.my.salesforce.com/00O0e000004iSQB?pv1=*" ]
+   }  ,{
+      "js": [ "jquery.js", "C.S/createTask.js" ],
+      "matches": [ "*://dealertrack-production.my.salesforce.com/00T/e?what_id=*" ]
+   } ,{
+      "js": [ "jquery.js", "C.S/selectContactList.js", "lib/jquery-ui/jquery-ui.js" ],
+     "css": ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
+      "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004iSLu*" ]
    } , {
-      "js": [ "C.S/caseLookUp.js", "lib/jquery-ui/jquery-ui.js"],
-      "css": ["lib/jquery-ui/jquery-ui.css","caseLookUp.css"],
-      "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0=*" ]
-   }
+    "js": [ "jquery.js", "C.S/selectNotes.js", "lib/jquery-ui/jquery-ui.js" ],
+    "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004iUqa?pv0=*" ]
+    }  ,{
+        "js": [ "jquery.js", "C.S/console.js"],
+        "css": ["C.S/css/notes.css"],        
+        "matches": [ "https://dealertrack-production.my.salesforce.com/console*" ]
+        }                
     ]
 }

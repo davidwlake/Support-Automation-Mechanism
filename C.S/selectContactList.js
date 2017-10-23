@@ -1,3 +1,4 @@
+
 var i,x, table = [];
 
 $( ".content" ).append( '<div id="continue_div" title="Take Action"><button class="button-ui myButton" id="continue_btn" name="continue">Select Contact Later</button></div>');
@@ -14,9 +15,10 @@ temp[i].onclick = function() {
         buffer[x] = this.cells[x].innerText;
     }
     if(buffer[5] != '\xa0' && buffer[5] != undefined){
-        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[4] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&";
+        var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id=" + localStorage.getItem("SAM:sfAccountID") + "&def_contact_id=" + buffer[5] + "+&FromNewCase=true&runTime=true&accountID=" + localStorage.getItem("SAM:accountID") + "&&";
         localStorage.setItem("SAM:caseURL", url);  
-                window.open("https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0="+ localStorage.getItem("SAM:accountID") +"&runTime=Notes", '_top'); 
+        window.open("https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0="+ localStorage.getItem("SAM:accountID") +"&runTime=Notes", '_top');         
+
     }
     };
 
@@ -37,8 +39,8 @@ temp[i].onclick = function() {
 setTimeout(function(){
     $( "#continue_btn" ).button(); 
     $('#continue_btn').click(function () {
-        localStorage.setItem("SAM:caseURL", "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ localStorage.getItem("SAM:sfAccountID") +"&FromNewCase=true&runTime=true&accountID="+localStorage.getItem("SAM:accountID") + "&");  
-        window.open("https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0="+ localStorage.getItem("SAM:accountID") +"&runTime=Notes", '_top'); 
+        localStorage.setItem("SAM:caseURL", "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ localStorage.getItem("SAM:sfAccountID") +"&FromNewCase=true&runTime=true&accountID="+localStorage.getItem("SAM:accountID") + "&&" );  
+        window.open("https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0="+ localStorage.getItem("SAM:accountID") +"&runTime=Notes", '_top');         
     });
 }, 500);
 

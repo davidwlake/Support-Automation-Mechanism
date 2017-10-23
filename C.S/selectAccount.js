@@ -40,6 +40,7 @@ if(url.includes("&?firstName=")){
     localStorage.setItem("SAM:runTime", "True");
 
     
-    var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ table[0][1] +"&FromNewCase=true&runTime=true&accountID="+accountID.replace("pv0=", "") + "&" + url.split("?")[2] + "&PSAProject=null&RecordType=012600000009PeO"; 
-    window.open(url, '_top');
+    var url = "https://dealertrack-production--c.na26.visual.force.com/apex/MLCSelectionPage?def_account_id="+ table[0][1] +"&FromNewCase=true&runTime=true&accountID="+accountID.replace("pv0=", "") + "&"; 
+    localStorage.setItem("SAM:caseURL", url);
+    window.open("https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0="+ accountID+"&runTime=Notes", '_top'); 
 }

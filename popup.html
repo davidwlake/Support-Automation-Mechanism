@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Protein Tracker</title>
         <script src="jquery.js"></script>
         <script src="popup.js"></script>
         <script src="options.js"></script>
@@ -67,6 +66,14 @@
                 Last name: <input type="text" id="LastName"><br>
                 <button class="button-ui myButton" id="logCase" name="LogACase"> Log a Case</button>
             </div>
+            <h3>Log M.P.R Action</h3>
+            <div>
+                <button class="button-ui myButton" id="logOBC" name="logOBC">Log OBC</button>
+                <button class="button-ui myButton" id="logIBC" name="logIBC">Log IBC</button> <br><br>
+                <button class="button-ui myButton" id="logVoicemail" name="logVoiceMail">Voice Mail</button>
+                <button class="button-ui myButton" id="logEmail" name="logEmail">Email</button>
+
+            </div>
             <h3>Set Default Template</h3>
             <div style="position: relative;">
                 Subject: <input type="text" id="subject"><br>
@@ -76,18 +83,21 @@
                 <input id="clear" name="clear" type="submit" class="button-ui myButton" value="Clear" />
                 <input id="addID" style="float: right;" type="submit" value="Add Service ID" class="button-ui myButton"/> 
                 <input id="addCMS" style="float: right;" type="submit" value="Add CMS Link" class="button-ui myButton"/>
-                
-
             </div>
+            
         </div>
-        <div id="footer" style="text-align:right;">
+        <br>
+        <button class="button-ui myButton" id="accountCases" name="accountCases" >Account Cases</button>    
+        <button class="button-ui myButton" id="clientSegment" name="clientSegment" >Client Segment</button>    
+        <button class="button-ui myButton" id="accountContacts" name="accountContacts" style="float:right;">Account Contacts</button>    
 
         <hr>
+        <div id="footer" style="text-align:right; ">
       SAM is Maintained by <a href="https://fuel.coxautoinc.com/people/David.Lake@coxautoinc.com" target="_blank">David Lake</a>
         <address>
             <a href="https://spark.achievers.com/profile/12893241" target="_blank">Spark!</a>,<a href="https://docs.google.com/forms/d/e/1FAIpQLSce2kn0EMsDdT8FEkTWY-nmE4wcAwNzgYKQvTILowdpWWxHBQ/viewform?usp=sf_link" target="_blank">Submit an Idea</a>,<a href="https://github.com/davidwlake/Support-Automation-Mechanism" target="_blank"> Github</a>
         </address>    
-        Version 1.8
+        Version 2.15
     </div>
 
     <div id="accordion">
