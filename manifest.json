@@ -8,7 +8,7 @@
    "name": "Support Automation Mechanism",
    "options_page": "options.html",
    "permissions": [ "tabs", "notifications", "<all_urls>", "storage", "contextMenus" ],
-   "version": "2.16",
+   "version": "2.9",
  
    "background": {
       "persistent": true,
@@ -24,28 +24,28 @@
         "default": "Alt+I",
         "mac": "Command+I"
     },
-        "description": "Toggle feature foo."
+        "description": "Influx"
     },
     "composer": {
         "suggested_key": {
         "default": "Alt+C",
         "mac": "Command+C"
     },
-        "description": "Toggle feature foo."
+        "description": "Composer"
     },
     "inventory": {
         "suggested_key": {
         "default": "Alt+A",
         "mac": "Command+A"
     },
-        "description": "Toggle feature foo."
+        "description": "Audit Trail"
     },
     "mpr": {
         "suggested_key": {
         "default": "Alt+M",
         "mac": "Command+M"
     },
-        "description": "Toggle feature foo."
+        "description": "MPRs"
     }
    },
    "content_scripts": [{
@@ -82,7 +82,7 @@
       "js": [ "jquery.js", "C.S/selectParentID.js" ],
       "matches": [ "*://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0=*" ]
    } ,{
-      "js": [ "jquery.js", "C.S/selectCaseID.js" ],
+      "js": [ "jquery.js", "C.S/selectMPR.js" ],
       "matches": [ "*://dealertrack-production.my.salesforce.com/00O0e000004iSQB?pv1=*" ]
    }  ,{
       "js": [ "jquery.js", "C.S/createTask.js" ],
@@ -94,7 +94,13 @@
    } , {
     "js": [ "jquery.js", "C.S/selectNotes.js", "lib/jquery-ui/jquery-ui.js" ],
     "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004iUqa?pv0=*" ]
-    }  ,{
+    },{
+        "js": [ "jquery.js", "C.S/selectCaseID.js" ],
+        "matches": [ "https://dealertrack-production.my.salesforce.com/00O0e000004iXtN?pv0=*" ]
+    },{
+        "js": [ "jquery.js", "C.S/matrixCreation.js" ],
+        "matches": [ "https://dealertrack-production.my.salesforce.com/a6R/e?retURL=500*" ]
+    },{
         "js": [ "jquery.js", "C.S/console.js"],
         "css": ["C.S/css/notes.css"],        
         "matches": [ "https://dealertrack-production.my.salesforce.com/console*" ]

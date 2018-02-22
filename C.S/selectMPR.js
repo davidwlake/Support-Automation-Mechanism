@@ -12,9 +12,16 @@ for(i = 1; i < (temp.length - 2); i++){
     }
 }
 
+if(/New/.test(table[0][7])){
+
+} else {
+    
+}
+
 var url = window.location.href;
+   
+var url2 = "https://dealertrack-production.my.salesforce.com/00T/e?what_id=" + table[0][11] + "&retURL=%2F" + table[0][11] + "&RecordType=012320000001Ewh&ent=Task&runTime="+url.split("&runTime=")[1]; 
+window.open(url2, '_top');
 
-localStorage.setItem("SAM:matrixTemplate", decodeURIComponent(url.split("?")[2]));
-localStorage.setItem("SAM:matrixTemplateFlag", true);
 
-window.open("https://dealertrack-production.my.salesforce.com/"+ table[0][1], '_top'); 
+

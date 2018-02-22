@@ -20,8 +20,6 @@ if(url.includes(".composer.dealer.com")){
 }
 
 if(accountid !== undefined || accountid !== null ){
-        var url = "https://dealertrack-production.my.salesforce.com/00O0e000004q94B?pv0=" + accountid + "&pv3=" + accountid;
+        var url = "https://dealertrack-production.my.salesforce.com/00O0e000004iSLk?pv0=" + accountid + "&runTime=Display";
         window.open(url, '_blank');
 };
-    
-

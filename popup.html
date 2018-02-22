@@ -5,8 +5,6 @@
         <script src="jquery.js"></script>
         <script src="popup.js"></script>
         <script src="options.js"></script>
-
-
         <script src="/lib/jquery-ui/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="/lib/jquery-ui/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="popup.css">
@@ -14,21 +12,19 @@
     </head>
     <body>
         <div class="title">
-        <h3 id="title">Support Automation Mechanism
-        <button id="help" style="text-align:left;" class="ui-button ui-widget ui-corner-all ui-button-icon-only largeButton " title="Button with icon only">
-            <span class="ui-icon ui-icon-help largeIcon"></span>
-        </button></h3>
-            
+        <h3 id="title">Support Automation Mechanism</h3>
+
         </div>
         <div id="alert"></div>
 
-        <hr>
+        <hr id="hr1">
         Case Templates: <br>
-        
+
         <select name="files" id="template">
                     <optgroup label="Support Templates:">
                         <option value="composerToolsChange">Website/Composer Change</option>
-                        <option value="digitalRetailingIssue">Digital Retailing</option>
+                        <option value="digitalRetailingIssue">Digital Retailing (On Platform)</option>
+                        <option value="digitalRetailingIssueOff">Digital Retailing (Off Platform)</option>
                         <option value="domainChange">Domain Changes</option>
                         <option value="inventoryToolsIssue">Inventory Issue</option>
                         <option value="incentivesToolsChange">Incentives Change</option>
@@ -44,21 +40,56 @@
                     <optgroup label="D.A Templates:">
                         <option value="DAWebsiteChange">Website/Composer Change</option>
                         <option value="DAAccountSupport">Account Support</option>
+                        <option value="DAAdvertisingChange">Advertising Change</option>
                         <option value="DAInventoryChange">Pricing/Inventory Change</option>
                     </optgroup>
                     <option value="defaultCase" selected="selected"> Default</option>
         </select>
-       
+
         <button class="button-ui myButton" id="createCase" name="Created">Create a Case</button>
         <div id="caseOptions">
             <label for="internal">Internal</label>
             <input type="checkbox" name="Internal" id="internal">
             <label for="roc">R.O.C</label>
             <input type="checkbox" name="R.O.C" id="roc">
-            <label for="cms">CMS Link</label>
-            <input type="checkbox" name="cms" id="cms">
+            <dl class="dropdown">
+            <dt>
+                <!-- <a href="#">-->
+                  <button class="button-ui myButton multiSel" >Include CMS Links</button>
+                 <!-- <span class="hida">Include Links</span> -->
+                  <div class="multiSel"></div>
+             <!--    </a>-->
+                </dt>
+
+                <dd>
+                    <div>
+                        <ul class="mutliSelect">
+                            <li><div>
+                                <input type="checkbox" id="currentPage" name="interest" value="coding">
+                                <label for="currentPage">Current Page</label>
+                            </div></li>
+                            <li><div>
+                                    <input type="checkbox" id="includeCMS" value="coding" name="interest">
+                                    <label for="includeCMS">CMS</label>
+                            </div></li>
+                            <li><div>
+                                    <input type="checkbox" id="includeVLP" name="interest" value="coding">
+                                    <label for="includeVLP">VLPs</label>
+                            </div></li>
+                            <li><div>
+                                    <input type="checkbox" id="includeVDP" name="interest" value="coding">
+                                    <label for="includeVDP">VDPs</label>
+                            </div></li>
+                            <li><div>
+                                    <input type="checkbox" id="includeShowRoom" name="interest" value="coding">
+                                    <label for="includeShowRoom">Showroom</label>
+                            </div></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
         </div>
-        <hr>
+        <hr id="hr2">
         <div id="accordion">
             <h3>Log A Case</h3>
             <div>
@@ -74,33 +105,69 @@
                 <button class="button-ui myButton" id="logEmail" name="logEmail">Email</button>
 
             </div>
+            <h3>Create a Matrix</h3>
+            <div> Templates
+                <select name="matrixTemplates" id="matrixTemplates">
+                  <optgroup label="Advertising:">
+                      <option value="adSupport">Advertising Support</option>
+                      <option value="mediaSpecialists">Media Specialists</option>
+                  </optgroup>
+                    <optgroup label="SDEV:">
+                        <option value="SdevGeneral">Sdev General</option>
+                        <option value="SdevRevertPage">Revert/Restore Page</option>
+                        <option value="SdevAddScript">Add/Remove Script</option>
+                        <option value="SdevWidgetChange">Widget Changes</option>
+                    </optgroup>
+                    <optgroup label="IST:">
+                        <option value="ISTGeneral">IST General Change</option>
+                        <option value="ISTCustomParser">Custom Parser</option>
+                    </optgroup>
+                    <optgroup label="Domains:">
+                        <option value="DomainsChange">Domains Change</option>
+                    </optgroup>
+
+                </select>
+                <br>
+                Case Number: <input type="text" id="caseNumber"><br>
+                <label for="includeMatrix">Create With New Case</label>
+                <input type="checkbox" name="includeMatrix" id="includeMatrix">
+                <button class="button-ui myButton" id="createMatrix" name="Created">Create a Matrix</button>
+
+
+            </div>
             <h3>Set Default Template</h3>
             <div style="position: relative;">
                 Subject: <input type="text" id="subject"><br>
+                <hr id="hrInner">
                 Body: <textarea rows="4" cols="40" id="body"></textarea><br>
-                
+
                 <input id="save" name="save" type="submit" class="button-ui myButton" value="Save" />
                 <input id="clear" name="clear" type="submit" class="button-ui myButton" value="Clear" />
-                <input id="addID" style="float: right;" type="submit" value="Add Service ID" class="button-ui myButton"/> 
+                <input id="addID" style="float: right;" type="submit" value="Add Service ID" class="button-ui myButton"/>
                 <input id="addCMS" style="float: right;" type="submit" value="Add CMS Link" class="button-ui myButton"/>
             </div>
-            
+
         </div>
         <br>
-        <button class="button-ui myButton" id="accountCases" name="accountCases" >Account Cases</button>    
-        <button class="button-ui myButton" id="clientSegment" name="clientSegment" >Client Segment</button>    
-        <button class="button-ui myButton" id="accountContacts" name="accountContacts" style="float:right;">Account Contacts</button>    
 
-        <hr>
+        <button class="button-ui myButton" id="accountCases" name="accountCases" >Account Cases</button>
+        <button class="button-ui myButton" id="accountNotes" name="accountNotes" >Account Notes</button>
+        <button class="button-ui myButton" id="accountContacts" name="accountContacts">Account Contacts</button>
+        <hr id="hr3">
         <div id="footer" style="text-align:right; ">
       SAM is Maintained by <a href="https://fuel.coxautoinc.com/people/David.Lake@coxautoinc.com" target="_blank">David Lake</a>
-        <address>
-            <a href="https://spark.achievers.com/profile/12893241" target="_blank">Spark!</a>,<a href="https://docs.google.com/forms/d/e/1FAIpQLSce2kn0EMsDdT8FEkTWY-nmE4wcAwNzgYKQvTILowdpWWxHBQ/viewform?usp=sf_link" target="_blank">Submit an Idea</a>,<a href="https://github.com/davidwlake/Support-Automation-Mechanism" target="_blank"> Github</a>
-        </address>    
-        Version 2.15
-    </div>
 
+        <address>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSce2kn0EMsDdT8FEkTWY-nmE4wcAwNzgYKQvTILowdpWWxHBQ/viewform?usp=sf_link" target="_blank">Submit an Idea</a>,<a href="http://bit.ly/2x2GSLj" target="_blank">C.S Help Form</a><br><a href="https://github.com/davidwlake/Support-Automation-Mechanism" target="_blank">Github</a>,<a href="options.html">Contributors</a>
+        </address>
+        <span id="version" style="color:#FF8300;">Version 3.0</span>
+        <button id="help" style="text-align:left;" class="ui-button ui-widget ui-corner-all ui-button-icon-only largeButton " title="Help Meh">
+            <span class="ui-icon ui-icon-help largeIcon"></span>
+        </button>
+        <br>
+
+    </div>
     <div id="accordion">
-  
+
     </body>
 </html>

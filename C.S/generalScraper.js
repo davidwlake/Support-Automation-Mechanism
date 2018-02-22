@@ -1,5 +1,6 @@
+
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-    function getSelectedText() {
+function getSelectedText() {
     var text = "";
     if (typeof window.getSelection != "undefined") {
         text = window.getSelection().toString();
@@ -75,53 +76,68 @@ function getData() {
     return [accountid, pageURL, vehID, url, vin, classification];
 }
     // If the received message has the expected format...
-    var selectedText = getSelectedText();
-    var data = getData();
-    if (selectedText) {
-        switch (msg.text) {
-            case "influx":
-                window.open("http://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=vehicleQuery&vin=" + selectedText, '_blank');
-                break;
-            case "composer":
-                window.open("http://" + selectedText + ".composer.dealer.com/website/as/" + selectedText + "/" + selectedText + "-admin/composer/index#", '_blank');
-                break;
-            case "mpr":
-                window.open("https://apps.dealer.com/analytics/as/"+ selectedText +"/" + selectedText + "-admin/report/executive-summary", '_blank');               window.open("https://apps.dealer.com/analytics/as/"+ selectedText +"/" + selectedText + "-admin/report/referral-details?defaultDataTableColumns=referrerChannel%2Cvisits%2CqualityVisits%2CavgQualityScore%2CbounceRate%2CformSubmissions%2CvdpViewsPerVisit%2CavgTimeOnSite%2CformSubmissionRate%2CpageViewsPerVisit", '_blank');
-                break;
-            case "inventory":
-                window.open("https://apps.dealer.com/inventory/as/"+ selectedText + "/"+ selectedText +"-admin/i/index#/vehicle~summary?quickFilter=all", '_blank');
-                break;
-            default:
+
+    if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
+        if(winLocation("dealertrack-production.my.salesforce.com/console")){
+            var domInfo = {
+                total:    document.getElementsByClassName("x-tab-strip-closable caseTab x-tab-strip-active")[0].innerText
+              };
+              sendResponse(domInfo);
+        } else if(winLocation("dealertrack-production.my.salesforce.com/500")){
+            var domInfo = {
+                total:    document.getElementById("cas2_ileinner").innerText.replace(" [View Hierarchy]","")
+              };
+              sendResponse(domInfo);
         }
     } else {
-        switch (msg.text) {
-            case "influx":
-                if (data[2] != "NONE") {
-                    window.open("http://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=vehicleQuery&vin=" + data[2], '_blank');
-                } else {
-                    window.open("http://influxtools.dealer.com//cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=" + data[0], '_blank');
-                }
-                break;
-            case "composer":
-                window.open("http://" + data[0] + ".composer.dealer.com/website/as/" + data[0] + "/" + data[0] + "-admin/composer/index#?goTo=" + data[1], '_blank');
-                break;
-            case "mpr":
-                window.open("https://apps.dealer.com/analytics/as/"+ data[0] +"/" + data[0] + "-admin/report/executive-summary", '_blank');  
-                 setTimeout( function(){
-                    window.open("https://apps.dealer.com/analytics/as/"+ data[0] +"/" + data[0] + "-admin/report/referral-details?defaultDataTableColumns=referrerChannel%2Cvisits%2CqualityVisits%2CavgQualityScore%2CbounceRate%2CformSubmissions%2CvdpViewsPerVisit%2CavgTimeOnSite%2CformSubmissionRate%2CpageViewsPerVisit", '_blank');
-                }, 500 );
-                
-                break;
-            case "inventory":
-                if (data[2] != "NONE") {
-                    window.open("https://apps.dealer.com/inventory/as/" + data[0]+ "/" + data[0] + "-admin/i/index#/vehicle~summary?vin=" + data[4] + "&history", '_blank');
-                } else {
-                    window.open("https://apps.dealer.com/inventory/as/"+ data[0] + "/"+ data[0] +"-admin/i/index#/vehicle~summary?quickFilter=all", '_blank');
-                }
-                break;   
-            default:
+        var selectedText = getSelectedText();
+        var data = getData();
+        if (selectedText) {
+            switch (msg.text) {
+                case "influx":
+                    window.open("http://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=vehicleQuery&vin=" + selectedText, '_blank');
+                    break;
+                case "composer":
+                    window.open("http://" + selectedText + ".composer.dealer.com/website/as/" + selectedText + "/" + selectedText + "-admin/composer/index#", '_blank');
+                    break;
+                case "mpr":
+                    window.open("https://apps.dealer.com/analytics/as/"+ selectedText +"/" + selectedText + "-admin/report/executive-summary", '_blank');               window.open("https://apps.dealer.com/analytics/as/"+ selectedText +"/" + selectedText + "-admin/report/referral-details?defaultDataTableColumns=referrerChannel%2Cvisits%2CqualityVisits%2CavgQualityScore%2CbounceRate%2CformSubmissions%2CvdpViewsPerVisit%2CavgTimeOnSite%2CformSubmissionRate%2CpageViewsPerVisit", '_blank');
+                    break;
+                case "inventory":
+                    window.open("https://apps.dealer.com/inventory/as/"+ selectedText + "/"+ selectedText +"-admin/i/index#/vehicle~summary?quickFilter=all", '_blank');
+                    break;
+                default:
+            }
+        } else {
+            switch (msg.text) {
+                case "influx":
+                    if (data[2] != "NONE") {
+                        window.open("http://influxtools.dealer.com/cgi-bin/feed_archives.cgi?action=vehicleQuery&vin=" + data[2], '_blank');
+                    } else {
+                        window.open("http://influxtools.dealer.com//cgi-bin/feed_archives.cgi?action=viewDealer&dealerid=" + data[0], '_blank');
+                    }
+                    break;
+                case "composer":
+                    window.open("http://" + data[0] + ".composer.dealer.com/website/as/" + data[0] + "/" + data[0] + "-admin/composer/index#?goTo=" + data[1], '_blank');
+                    break;
+                case "mpr":
+                    window.open("https://apps.dealer.com/analytics/as/"+ data[0] +"/" + data[0] + "-admin/report/executive-summary", '_blank');  
+                     setTimeout( function(){
+                        window.open("https://apps.dealer.com/analytics/as/"+ data[0] +"/" + data[0] + "-admin/report/referral-details?defaultDataTableColumns=referrerChannel%2Cvisits%2CqualityVisits%2CavgQualityScore%2CbounceRate%2CformSubmissions%2CvdpViewsPerVisit%2CavgTimeOnSite%2CformSubmissionRate%2CpageViewsPerVisit", '_blank');
+                    }, 500 );
+                    
+                    break;
+                case "inventory":
+                    if (data[2] != "NONE") {
+                        window.open("https://apps.dealer.com/inventory/as/" + data[0]+ "/" + data[0] + "-admin/i/index#/vehicle~summary?vin=" + data[4] + "&history", '_blank');
+                    } else {
+                        window.open("https://apps.dealer.com/inventory/as/"+ data[0] + "/"+ data[0] +"-admin/i/index#/vehicle~summary?quickFilter=all", '_blank');
+                    }
+                    break;   
+                default:
+            }
         }
-    }
+    } 
 
 });
 

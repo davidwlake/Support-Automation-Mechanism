@@ -10,8 +10,8 @@ if(url.includes("&runTime=true")){
         var accountID = url.split("&")[4].split("accountID=")[1];
 
      } else {
-        var template = JSON.parse(decodeURIComponent(url.split("?")[1].split("&")[5]));
         var accountID = url.split("&")[3].split("accountID=")[1];
+        var template = JSON.parse(decodeURIComponent(url.split("?")[1].split("&")[5]));        
      }
         
 
@@ -22,11 +22,17 @@ if(url.includes("&runTime=true")){
 
      
      document.getElementById("j_id0:form:j_id9:j_id39:j_id65").value = template.type;
-     document.getElementsByName('j_id0:form:j_id9:j_id39:j_id54')[0].dispatchEvent(changeEvent, setTimeout(function(){  document.getElementsByName('j_id0:form:j_id9:j_id39:j_id58')[0].value = template.category;  document.getElementsByName('j_id0:form:j_id9:j_id39:j_id58')[0].dispatchEvent(changeEvent);
-     setTimeout(function(){      
-        $( '<p style="font-weight: normal; color: black; font-size: 13px;">' + template.notes + "</p>").insertBefore( ".pbBody" );        
-     }, 1000);
-    }, 500));
+     document.getElementsByName('j_id0:form:j_id9:j_id39:j_id54')[0].dispatchEvent(changeEvent, 
+        setTimeout(function(){  
+            document.getElementsByName('j_id0:form:j_id9:j_id39:j_id58')[0].value = template.category;  
+            document.getElementsByName('j_id0:form:j_id9:j_id39:j_id58')[0].dispatchEvent(changeEvent);
+            setTimeout(function(){ 
+                if(!(template.subCategory.includes("-1"))){
+                    document.getElementsByName('j_id0:form:j_id9:j_id39:j_id62')[0].value = template.subCategory;                      
+                }
+                $( '<p style="font-weight: normal; color: black; font-size: 13px;">' + template.notes + "</p>").insertBefore( ".pbBody" );        
+            }, 1000);
+        }, 500));
 }, 1000);   //End Load Time
 }
 });
